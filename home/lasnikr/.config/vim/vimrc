@@ -1,0 +1,88 @@
+" config files
+set viminfo+=n$XDG_STATE_HOME/vim/viminfo
+runtime expand("$XDG_CONFIG_HOME") . "/vim/xdg.vim"
+
+" packages
+call plug#begin(expand("$XDG_DATA_HOME") . "/vim/plugged")
+Plug 'junegunn/vim-plug'
+Plug 'bullets-vim/bullets.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'jasonccox/vim-wayland-clipboard'
+"Plug 'instant-markdown/vim-instant-markdown', {'for': ['markdown', 'markdown.pandoc']}
+call plug#end()
+
+" markdown & latex
+" let g:instant_markdown_mathjax = 1
+" let g:instant_markdown_slow = 1
+" let g:instant_markdown_autostart = 0
+" let g:instant_markdown_autoscroll = 0
+
+command SpawnMarkdown w | !alacritty -e sh -c 'echo "%" | entr -c glow "%"' &
+noremap <F10> :w<CR>:! pdflatex -output-directory=$(dirname %) % > /dev/null 2>&1 & <CR><CR>
+
+command SpawnZathura w | !f=% ; zathura ${f\%.*}.pdf &
+
+let g:bullets_outline_levels = ['ROM', 'ABC', 'num', 'abc', 'rom', 'std*', 'std-']
+
+let g:bullets_custom_mappings = [
+  \ ['imap', '<cr>', '<Plug>(bullets-newline)'],
+  \ ['inoremap', '<C-cr>', '<cr>'],
+  \
+  \ ['nmap', 'o', '<Plug>(bullets-newline)'],
+  \
+  \ ['vmap', 'gN', '<Plug>(bullets-renumber)'],
+  \ ['nmap', 'gN', '<Plug>(bullets-renumber)'],
+  \
+  \ ['nmap', '<leader>x', '<Plug>(bullets-toggle-checkbox)'],
+  \
+  \ ['imap', '<c-k>', '<Plug>(bullets-demote)'],
+  \ ['nmap', '<c-k>', '<Plug>(bullets-demote)'],
+  \ ['imap', '<c-j>', '<Plug>(bullets-promote)'],
+  \ ['nmap', '<c-j>', '<Plug>(bullets-promote)'],
+  \ ]
+
+" lsp
+" Clangd language server
+" call LspAddServer([#{
+" 	\    name: 'clangd',
+" 	\    filetype: ['c', 'cpp'],
+" 	\    path: '/usr/bin/clangd',
+" 	\    args: ['--background-index']
+" 	\  }])
+
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" editor
+set shiftwidth=4 smarttab
+set expandtab
+set tabstop=8 softtabstop=0
+set number relativenumber
+set showcmd
+set mouse=a
+set shell=zsh
+syntax on
+
+" statusline
+set laststatus=2
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+
+" shortcuts
+let mapleader = ";"
+
+map <leader>n :bnext<CR>
+map <leader>N :bprevious<CR>
+map <leader>d :bdelete<CR>
+map <leader>f :%s///g
+
+map zc :LspDiag current<CR>
+map zr :LspRename<CR>
+map zs :LspSymbolSearch<CR>
+map za :LspCodeAction<CR>
+map zh :LspHover<CR>
+
+inoremap <c-s> <c-o>:w<cr>
+noremap <c-s> :w<cr>
+
+noremap _v :e $MYVIMRC<CR>
+noremap _s :so $MYVIMRC<CR>
