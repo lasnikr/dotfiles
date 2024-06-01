@@ -1,0 +1,8 @@
+anchor=center
+text-alignment=center
+padding=20
+border-radius=10
+
+[urgency=critical]
+border-color=#860111
+background-color=#ff6347

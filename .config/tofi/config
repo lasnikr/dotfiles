@@ -1,0 +1,28 @@
+/* size and positioning */
+width = 100%
+height = 100%
+padding-left = 37%
+padding-top = 25%
+border-width = 30
+outline-width = 0
+
+/* result settings */
+result-spacing = 8
+num-results = 8
+
+/* font and text appearance */
+font = monospace
+text-color = #ebdbb2
+
+/* selection appearance */
+selection-color = #000000
+selection-background = #ebdbb2
+selection-background-padding = 4
+
+/* other appearance settings */
+background-color = #000000aa
+border-color = #ebdbb2
+
+/* behavior settings */
+hide-cursor = true
+require-match = false

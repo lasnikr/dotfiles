@@ -1,0 +1,8 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+text/plain=nvim.desktop
+text/ascii=nvim.desktop
+image/jpeg=imv.desktop
+image/png=imv.desktop
+inode/directory=librewolf.desktop
+

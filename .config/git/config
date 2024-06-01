@@ -1,0 +1,9 @@
+[user]
+	name = lasnikr
+	email = 61758940+lasnikr@users.noreply.github.com
+[core]
+	editor = vim
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main

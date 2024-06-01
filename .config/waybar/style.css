@@ -1,0 +1,156 @@
+/* Keyframes */
+@keyframes blink-critical {
+	to {
+		background-color: @critical;
+	}
+}
+@define-color black	#282828;
+@define-color red	#cc241d;
+@define-color yellow	#d79921;
+@define-color dark	#a89984;
+@define-color light	#ebdbb2;
+
+
+@define-color warning 	@yellow;
+@define-color critical	@red;
+@define-color mode	@light;
+@define-color unfocused	@light;
+@define-color focused	@dark;
+@define-color inactive	@dark;
+
+@define-color sound	@dark;
+@define-color network	@light;
+@define-color memory	@dark;
+@define-color cpu	@light;
+@define-color temp	@dark;
+@define-color battery	@light;
+@define-color backlight	@dark;
+@define-color time	@light;
+
+/* reset styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+	icon-shadow: none;
+}
+
+/* The whole bar */
+#waybar {
+	background: @light;
+	color: @black;
+	font-size: 10pt;
+}
+
+/* modules */
+#pulseaudio,
+#network,
+#memory,
+#cpu,
+#temperature,
+#battery,
+#backlight,
+#clock,
+#mpris {
+	padding-left: 8pt;
+	padding-right: 8pt;
+}
+
+/* critical modules */
+#mode,
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical.discharging {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-critical;
+	animation-duration: 0.5s;
+}
+
+/* warnings */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+	color: @warning;
+}
+
+#mode {
+	color: @black;
+	background: @mode;
+}
+
+#workspaces button {
+	padding-left: 2pt;
+	padding-right: 2pt;
+	color: @black;
+	background: @unfocused;
+}
+
+#workspaces button.visible {
+	color: @black;
+	background: @inactive;
+}
+
+#workspaces button.focused {
+	color: @black;
+	background: @focused;
+}
+
+#workspaces button.urgent {
+	color: @black;
+	background: @warning;
+}
+
+#workspaces button:hover {
+	background: @black;
+	color: @black;
+}
+
+#pulseaudio {
+	background: @sound;
+	color: @black;
+}
+
+#network {
+	background: @network;
+	color: @black;
+}
+
+#memory {
+	background: @memory;
+	color: @black;
+}
+
+#cpu {
+	background: @cpu;
+	color: @black;
+}
+
+#temperature {
+	background: @temp;
+	color: @black;
+}
+
+#battery {
+	background: @battery;
+	color: @black;
+}
+
+#backlight {
+	background: @backlight;
+	color: @black;
+}
+
+#clock {
+	background: @light;
+	color: @black;
+}
+

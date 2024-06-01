@@ -1,0 +1,44 @@
+[[hints.enabled]]
+binding = { key = "M", mods = "Control|Shift" }
+command = "/etc/user/scripts/open.sh"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Control"
+post_processing = true
+persist = false
+
+[keyboard]
+bindings = [
+   { key = "Return", mods = "Control|Shift", action = "SpawnNewInstance" },
+   { key = "J", mods = "Control|Shift", action = "ScrollHalfPageDown" },
+   { key = "K", mods = "Control|Shift", action = "ScrollHalfPageUp" },
+]
+
+[font]
+size = 11.0
+
+# modified https://github.com/alacritty/alacritty-theme/blob/master/themes/gruvbox_light.toml
+[colors.primary]
+background = '#fbf1c7'
+foreground = '#000000'
+
+[colors.normal]
+black   = '#fbf1c7'
+red     = '#cc241d'
+green   = '#98971a'
+yellow  = '#d79921'
+blue    = '#458588'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#7c6f64'
+
+[colors.bright]
+black   = '#928374'
+red     = '#9d0006'
+green   = '#79740e'
+yellow  = '#b57614'
+blue    = '#076678'
+magenta = '#8f3f71'
+cyan    = '#427b58'
+white   = '#3c3836'
+
